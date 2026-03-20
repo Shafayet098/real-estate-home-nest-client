@@ -3,12 +3,16 @@ import Hero from '../../Components/Hero/Hero';
 import ChooseUs from '../../Components/ChooseUs/ChooseUs';
 import Services from '../../Components/Services/Services';
 import Partners from '../../Components/Partners/Partners';
+import Cards from '../../Components/Cards/Cards';
 
 const Home = () => {
     return (
         <div>
             <div className='mt-20'>
                 <Hero></Hero>
+            </div>
+            <div className='container mx-auto mt-20'>
+                <Cards></Cards>
             </div>
             <div className='mt-20  container mx-auto'>
                 <ChooseUs></ChooseUs>

@@ -59,13 +59,13 @@ const Footer = () => {
                         </a>
                     </div>
                     <div className="flex justify-center pt-4 space-x-4 lg:pt-0 lg:col-end-13">
-                        <a rel="noopener noreferrer" href="#" title="GitHub" className="flex items-center justify-center w-12 h-12 rounded-full bg-primary text-white hover:bg-secondary" >
+                        <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/shafayet.hossen.231448" title="GitHub" className="flex items-center justify-center w-12 h-12 rounded-full bg-primary text-white hover:bg-secondary" >
                             <FaFacebook size={25}></FaFacebook >
                         </a>
-                        <a rel="noopener noreferrer" href="#" title="GitHub" className="flex items-center justify-center w-12 h-12 rounded-full bg-primary text-white hover:bg-secondary" >
+                        <a target="_blank" rel="noopener noreferrer" href="https://github.com/Shafayet098" title="GitHub" className="flex items-center justify-center w-12 h-12 rounded-full bg-primary text-white hover:bg-secondary" >
                             <FaXTwitter size={25}></FaXTwitter>
                         </a>
-                        <a rel="noopener noreferrer" href="#" title="GitHub" className="flex items-center justify-center w-12 h-12 rounded-full bg-primary text-white hover:bg-secondary" >
+                        <a target="_blank" rel="noopener noreferrer" href="https://x.com/Shafayet098" title="GitHub" className="flex items-center justify-center w-12 h-12 rounded-full bg-primary text-white hover:bg-secondary" >
                             <FaGithub size={25}></FaGithub>
                         </a>
                     </div>
