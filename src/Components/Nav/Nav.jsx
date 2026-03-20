@@ -13,7 +13,7 @@ const Nav = () => {
         } to={'/allproperties'}>All Properties</NavLink>
         </li>
         <li><NavLink className={({ isActive }) => isActive ? "text-primary border-b-2 bg-transparent rounded-none  border-b-primary" : "bg-transparent"
-        } to={'/addprperties'}>Add Properties</NavLink>
+        } to={'/addproperties'}>Add Properties</NavLink>
         </li>
         <li><NavLink className={({ isActive }) => isActive ? "text-primary border-b-2 bg-transparent rounded-none  border-b-primary" : "bg-transparent"
         } to={'/myproperties'}>My Properties</NavLink>

@@ -103,8 +103,8 @@ const Partners = () => {
     return (
         <div>
             <div className='text-center space-y-2 mb-4'>
-                <h1 className='text-4xl text-secondary font-semibold'>Our Partners</h1>
-                <p className='text-secondary'>Get the Best from the Best Builders</p>
+                <h1 className='text-4xl md:text-5xl text-secondary font-semibold'>Our Partners</h1>
+                <p className='text-secondary text-md md:text-lg'>Get the Best from the Best Builders</p>
             </div>
             <section className="w-full bg-white py-5 md:py-6">
                 <div className=" px-4">
