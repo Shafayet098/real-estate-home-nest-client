@@ -8,6 +8,7 @@ import Retings from "../Pages/Retings/Retings";
 import PrivateRoute from "../Components/PrivateRoute/PrivateRoute";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
+import Property from "../Pages/Property/Property";
 
 export const router = createBrowserRouter([
   {
@@ -16,12 +17,13 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
+        loader: () => fetch('http://localhost:3000/properties'),
         Component: Home
       },
       {
         path: 'addproperties',
         element:
-        <PrivateRoute>
+          <PrivateRoute>
             <AddProperties></AddProperties>
           </PrivateRoute>
       },
@@ -29,6 +31,14 @@ export const router = createBrowserRouter([
         path: 'allproperties',
         loader: () => fetch('http://localhost:3000/properties'),
         Component: AllProperties
+      },
+      {
+        path: 'properties/:id',
+        loader:({params})=>fetch(`http://localhost:3000/properties/${params.id}`),
+        element: 
+          <PrivateRoute>
+            <Property></Property>
+          </PrivateRoute>
       },
       {
         path: 'myproperties/:email',
@@ -40,14 +50,17 @@ export const router = createBrowserRouter([
       },
       {
         path: 'properties/ratings',
-        Component: Retings
+        element:
+          <PrivateRoute>
+            <Retings></Retings>
+          </PrivateRoute>
       },
       {
-        path:'login',
+        path: 'login',
         Component: Login
       },
       {
-        path:'register',
+        path: 'register',
         Component: Register
       }
     ]

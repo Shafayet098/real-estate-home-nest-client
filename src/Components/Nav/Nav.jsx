@@ -24,7 +24,7 @@ const Nav = () => {
         } to={'/addproperties'}>Add Properties</NavLink>
         </li>
         <li><NavLink className={({ isActive }) => isActive ? "text-primary border-b-2 bg-transparent rounded-none  border-b-primary" : "bg-transparent"
-        } to={'/myproperties/shafayethossenchowdhury@gmail.com'}>My Properties</NavLink>
+        } to={`/myproperties/${user?.email}`}>My Properties</NavLink>
         </li>
         <li><NavLink className={({ isActive }) => isActive ? "text-primary border-b-2 bg-transparent rounded-none  border-b-primary" : "bg-transparent"
         } to={'/properties/ratings'}>My Ratings</NavLink>

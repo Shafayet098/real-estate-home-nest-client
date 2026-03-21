@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { use } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
+import { AuthContext } from '../../Components/Context/AuthContext';
 
 const AddProperties = () => {
+    const {user} = use(AuthContext)
+    console.log(user)
     const handleFormSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form)
         const realEstateData = Object.fromEntries(formData.entries());
+        realEstateData.postedTime = new Date().toISOString();
         console.log(realEstateData)
         fetch('http://localhost:3000/addproperties', {
             method: 'POST',
@@ -19,6 +23,7 @@ const AddProperties = () => {
             .then(data =>{
                if(data.insertedId){
                 toast.success('Property is Successfully Added!')
+                form.reset()
                }
             } )
 
@@ -147,6 +152,7 @@ const AddProperties = () => {
                             <input
                                 type="email"
                                 name="userEmail"
+                                value={user?.email}
                                 placeholder="Enter your email"
                                 className="input outline-primary border-0 w-full text-primary text-md font-semibold"
                                 required
@@ -160,6 +166,7 @@ const AddProperties = () => {
                             <input
                                 type="text"
                                 name="userName"
+                                value={user?.displayName}
                                 placeholder="Enter your name"
                                 className="input outline-primary border-0 w-full  text-primary text-md font-semibold"
                                 required

@@ -4,15 +4,18 @@ import ChooseUs from '../../Components/ChooseUs/ChooseUs';
 import Services from '../../Components/Services/Services';
 import Partners from '../../Components/Partners/Partners';
 import Cards from '../../Components/Cards/Cards';
+import { useLoaderData } from 'react-router';
 
 const Home = () => {
+    const properties = useLoaderData();
+    console.log(properties)
     return (
         <div>
             <div className='mt-20'>
                 <Hero></Hero>
             </div>
             <div className='container mx-auto mt-20'>
-                <Cards></Cards>
+                <Cards properties={properties}></Cards>
             </div>
             <div className='mt-20  container mx-auto'>
                 <ChooseUs></ChooseUs>

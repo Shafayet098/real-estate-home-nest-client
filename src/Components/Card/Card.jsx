@@ -4,22 +4,24 @@ import { LiaBathSolid } from 'react-icons/lia';
 import { LuSquareMenu } from 'react-icons/lu';
 import { RiHotelBedLine } from 'react-icons/ri';
 import { Link } from 'react-router';
+import defaultImage from './../../assets/image_default.jpg'
 
-const Card = () => {
+const Card = ({ property }) => {
     return (
         <div className='flex'>
-            <Link className="group  max-w-sm mx-auto transition border-2 p-2 hover:scale-105 border-opacity-30 border-primary hover:border-secondary">
-                <div className="relative">
-                    <img
-                        src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=800&q=80"
-                        alt="Modern Chateau"
-                        className="w-full object-cover"
-                    />
+            <Link to={`/properties/${property._id}`} className="group  max-w-sm mx-auto transition border-2 p-2 hover:scale-105 border-opacity-30 border-primary hover:border-secondary">
+                <div className="relative ">
+                    <div className='h-[40vh] object-cover overflow-hidden'> 
+                        <img
+                            src={property?.imageLink || defaultImage}
+                            alt="Modern Chateau"
+                            className="w-full object-cover"
+                        />
+                    </div>
 
-                    {/* Badge */}
                     <div className="absolute bottom-3 left-3">
                         <span className="bg-secondary px-3 py-1 text-[12px] font-medium text-white">
-                            Featured
+                            {property?.category}
                         </span>
                     </div>
                 </div>
@@ -27,13 +29,13 @@ const Card = () => {
                     <div className="grid grid-cols-2 gap-4">
                         <div className="pr-4 border-r ">
                             <h3 className="text-xl font-bold leading-8 text-secondary">
-                                Modern
-                                <br />
-                                Chateau
+                                {
+                                    property?.propertyName.slice(" ")
+                                }
                             </h3>
 
                             <div className="mt-2 inline-block bg-[#f3e69b] px-1.5 py-0.5 text-sm font-bold leading-none text-accent">
-                                $ 63120
+                                $ <span>{property?.price}</span>
                             </div>
                         </div>
 
@@ -43,8 +45,8 @@ const Card = () => {
                                     <LuSquareMenu size={15}></LuSquareMenu>
                                 </span>
                                 <div>
-                                    <span className="font-semibold text-gray-700">Sq Ft:</span>
-                                    <span className="ml-2">3500</span>
+                                    <span className="font-semibold text-gray-700">Sq Ft: </span>
+                                    <span className="ml-2">{property?.squareFeet}</span>
                                 </div>
                             </div>
 
@@ -54,7 +56,7 @@ const Card = () => {
                                 </span>
                                 <div>
                                     <span className="font-semibold text-gray-700">Beds:</span>
-                                    <span className="ml-2">3</span>
+                                    <span className="ml-2">{property?.beds}</span>
                                 </div>
                             </div>
 
@@ -78,15 +80,14 @@ const Card = () => {
                             <GrLocation size={20}></GrLocation>
                         </span>
                         <p className="text-secondary">
-                            Chennai, Tamil Nadu, India, IN 641001
+                            {property?.location}
                         </p>
                     </div>
 
                     {/* Description */}
                     <div className="mt-6 text-[14px] leading-8 text-secondary">
                         <span className="font-semibold text-secondary">Description:</span>{" "}
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dui
-                        felis, molestie id varius...
+                        {property?.description}
                     </div>
                 </div>
             </Link>
