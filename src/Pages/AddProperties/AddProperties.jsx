@@ -1,4 +1,5 @@
 import React from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 
 const AddProperties = () => {
     const handleFormSubmit = (e) => {
@@ -15,7 +16,11 @@ const AddProperties = () => {
             body: JSON.stringify(realEstateData)
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data =>{
+               if(data.insertedId){
+                toast.success('Property is Successfully Added!')
+               }
+            } )
 
     }
     return (
@@ -169,6 +174,7 @@ const AddProperties = () => {
                     </div>
                 </form>
             </div>
+             <Toaster />
         </div>
 
     );
