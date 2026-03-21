@@ -31,7 +31,7 @@ const Login = () => {
                     <label className="label text-lg text-secondary">Email</label>
                     <input type="email" className="input input-bordered w-full outline-primary border-0 text-primary text-md font-semibold text-lg" placeholder="Email" name='email' required />
                     <label className="label text-lg text-secondary">Password</label>
-                    <input type="password" className="input font-bold input-bordered w-full outline-primary border-0 text-primary text-md font-semibold text-lg" placeholder="Password" name='password' required />
+                    <input type="password" className="input font-bold input-bordered w-full outline-primary border-0 text-primary text-md text-lg" placeholder="Password" name='password' required />
                     <div><a className="link link-hover text-md">Forgot password?</a></div>
                     <button className="btn mt-4 text-primary bg-white border-2 border-primary text-lg hover:bg-primary hover:text-white rounded-lg">Login</button>
                 </form>

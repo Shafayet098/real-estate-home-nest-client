@@ -20,7 +20,7 @@ const Register = () => {
         // console.log(name, email, password)
         const regExp = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
         if (regExp.test(password) === false) {
-            setError("Password must be lest 8 characters, at lest one capital letter, one small letter, one number")
+            setError("Password must be at lest 8 characters which composed of at lest one capital letter, one small letter, one number")
             return
         }
 
@@ -28,13 +28,15 @@ const Register = () => {
             .then(() => {
                 // console.log(res)
                 updateUser(obj).then(() => {
-                    console.log("Profile Updated")
+                    // console.log("Profile Updated")
                     navigate('/')
                 }).catch(err => {
-                    setError(err)
+                    const errorMessage = err.message;
+                    setError(errorMessage)
                 })
             }).catch(err => {
-                setError(err)
+                 const errorMessage = err.message;
+                setError(errorMessage)
 
             })
     }
@@ -57,7 +59,7 @@ const Register = () => {
                         <input type="password" name='password' className="input input-bordered w-full outline-primary border-0 text-primary text-md font-semibold text-lg" placeholder="Password" required />
                         <button className="btn mt-4 text-primary bg-white border-2 border-primary text-lg hover:bg-primary hover:text-white rounded-lg">Register</button>
                     </form>
-                    <p className='test-red-400'>{error}</p>
+                    <p className='text-red-400'>{error}</p>
                     <p className='text-lg'>Don't have an account? <Link className=' font-semibold underline text-primary' to='/login'>Login</Link></p>
                 </div>
             </div>

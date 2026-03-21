@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { use } from 'react';
 import icon from './../../assets/icon.png'
-import { Link, NavLink } from 'react-router';
+import { Link, NavLink, useNavigate } from 'react-router';
 import './Nav.css'
 import { IoMdMenu } from 'react-icons/io';
+import { AuthContext } from '../Context/AuthContext';
 
 const Nav = () => {
+    const { user, logOut } = use(AuthContext)
+    const navigate = useNavigate();
+    const handleLogout = () => {
+        logOut().then(() => {
+            navigate('/')
+        })
+    }
     const links = <>
         <li ><NavLink className={({ isActive }) => isActive ? "text-blue-500 border-b-2 bg-transparent rounded-none  border-b-blue-500" : "bg-transparent"
         } to={'/'}>Home</NavLink>
@@ -38,14 +46,37 @@ const Nav = () => {
                         }
                     </ul>
                 </div>
-                <div className="navbar-end">
-                    <Link class="relative inline-flex items-center justify-center p-2 px-4 md:px-6 py-2 md:py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-primary rounded-full shadow-md group">
-                        <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-primary group-hover:translate-x-0 ease">
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                        </span>
-                        <span class="absolute flex items-center justify-center text-primary transition-all duration-300 transform group-hover:translate-x-full ease">Login </span>
-                        <span class="relative invisible">Login</span>
-                    </Link>
+                <div className="navbar-end flex items-center gap-4">
+                    <div>
+                        {
+                            user && 
+                            <div className="avatar">
+                                <div className="ring-primary ring-offset-base-100 w-10 md:w-12 rounded-full ring-1 ring-offset-1">
+                                    <img src={user.photoURL || 'https://img.daisyui.com/images/profile/demo/spiderperson@192.webp'} />
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div>
+                        {
+                            user ?
+                                <Link onClick={handleLogout} class="relative inline-flex items-center justify-center p-2 px-4 md:px-6 py-2 md:py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-primary rounded-full shadow-md group">
+                                    <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-primary group-hover:translate-x-0 ease">
+                                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                    </span>
+                                    <span class="absolute flex items-center justify-center text-primary transition-all duration-300 transform group-hover:translate-x-full ease">Logout </span>
+                                    <span class="relative invisible">Logout</span>
+                                </Link>
+                                :
+                                <Link to={'/login'} class="relative inline-flex items-center justify-center p-2 px-4 md:px-6 py-2 md:py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-primary rounded-full shadow-md group">
+                                    <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-primary group-hover:translate-x-0 ease">
+                                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                    </span>
+                                    <span class="absolute flex items-center justify-center text-primary transition-all duration-300 transform group-hover:translate-x-full ease">Login </span>
+                                    <span class="relative invisible">Login</span>
+                                </Link>
+                        }
+                    </div>
                 </div>
                 <div className="dropdown dropdown-bottom dropdown-end">
                     <div tabIndex={0} role="button" className="pl-2 md:pl-4 cursor-pointer m-1 lg:hidden"><IoMdMenu className='text-secondary' size={35}></IoMdMenu> </div>
