@@ -17,7 +17,7 @@ const AddProperties = () => {
         const realEstateData = Object.fromEntries(formData.entries());
         realEstateData.postedTime = new Date().toISOString();
         // console.log(realEstateData)
-        fetch('http://localhost:3000/addproperties', {
+        fetch('https://real-estate-home-nest-server.vercel.app/addproperties', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

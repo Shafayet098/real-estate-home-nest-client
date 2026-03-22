@@ -10,7 +10,7 @@ const MyProperties = () => {
     const [properties, setProperties] = useState([]);
     
     useEffect(() => {
-        fetch(`http://localhost:3000/properties/admin/${user.email}`)
+        fetch(`https://real-estate-home-nest-server.vercel.app/properties/admin/${user.email}`)
             .then(res => res.json())
             .then(data => setProperties(data))
     }, [])

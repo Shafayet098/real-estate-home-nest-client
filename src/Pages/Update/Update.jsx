@@ -17,7 +17,7 @@ const Update = () => {
         realEstateData.postedTime = new Date().toISOString();
         // console.log(realEstateData)
 
-        fetch(`http://localhost:3000/properties/${property._id}`, {
+        fetch(`https://real-estate-home-nest-server.vercel.app/properties/${property._id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

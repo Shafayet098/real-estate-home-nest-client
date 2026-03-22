@@ -19,7 +19,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: () => fetch('http://localhost:3000/properties'),
+        loader: () => fetch('https://real-estate-home-nest-server.vercel.app/properties'),
         Component: Home
       },
       {
@@ -31,12 +31,12 @@ export const router = createBrowserRouter([
       },
       {
         path: 'allproperties',
-        loader: () => fetch('http://localhost:3000/properties'),
+        loader: () => fetch('https://real-estate-home-nest-server.vercel.app/properties'),
         Component: AllProperties
       },
       {
         path: 'properties/:id',
-        loader: ({ params }) => fetch(`http://localhost:3000/properties/${params.id}`),
+        loader: ({ params }) => fetch(`https://real-estate-home-nest-server.vercel.app/properties/${params.id}`),
         element:
           <PrivateRoute>
             <Property></Property>
@@ -51,7 +51,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'properties/ratings',
-        loader:()=>fetch(`http://localhost:3000/reviews`),
+        loader:()=>fetch(`https://real-estate-home-nest-server.vercel.app/reviews`),
         element:
           <PrivateRoute>
             <Retings></Retings>
@@ -59,7 +59,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'properties/update/:id',
-        loader:({params})=>fetch(`http://localhost:3000/properties/${params.id}`),
+        loader:({params})=>fetch(`https://real-estate-home-nest-server.vercel.app/properties/${params.id}`),
         element:
           <PrivateRoute>
             <Update></Update>

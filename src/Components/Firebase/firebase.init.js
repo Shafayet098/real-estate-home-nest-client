@@ -12,13 +12,6 @@ const firebaseConfig = {
   storageBucket: import.meta.env.VITE_storageBucket,
   messagingSenderId: import.meta.env.VITE_messagingSenderId,
   appId: import.meta.env.VITE_appId
-
-  // apiKey: "AIzaSyD4AmGqjfaVXbU70Rb3tF3ztgnh5i67dgE",
-  // authDomain: "realestaste-53463.firebaseapp.com",
-  // projectId: "realestaste-53463",
-  // storageBucket: "realestaste-53463.firebasestorage.app",
-  // messagingSenderId: "106077378709",
-  // appId: "1:106077378709:web:0156d019b43ae94d7de39c"
 };
 
 // Initialize Firebase

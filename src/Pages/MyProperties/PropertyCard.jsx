@@ -19,7 +19,7 @@ const PropertyCard = ({ property, setProperties, properties }) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/properties/${property._id}`, {
+                fetch(`https://real-estate-home-nest-server.vercel.app/properties/${property._id}`, {
                     method: 'DELETE'
                 }).then(res => res.json()).then(data => {
                     if (data.deletedCount) {

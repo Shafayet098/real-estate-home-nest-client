@@ -21,7 +21,7 @@ export default function RatingsReviewsSection({property}) {
         const image= property.imageLink;
         const reviewData ={reviewText, rating, userName,propertyName,postedTime, image,profilePic} 
         // console.log(reviewData)
-        fetch('http://localhost:3000/reviews',{
+        fetch('https://real-estate-home-nest-server.vercel.app/reviews',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
