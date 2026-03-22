@@ -71,12 +71,12 @@ const Hero = () => {
         return "scale-75 opacity-0 z-10";
     };
     return (
-        <div className="relative w-full mx-auto h-[90vh] flex items-center justify-center overflow-hidden">
+        <div className="relative w-full mx-auto h-[80vh] sm:h-[90vh] flex items-center justify-center overflow-hidden">
             {slides.map((slide, index) => (
                 <div
                     key={slide.id}
                     onClick={() => setActive(index)}
-                    className={`absolute w-[80%] md:w-[80%] h-[90vh] cursor-pointer rounded-3xl overflow-hidden shadow-2xl transition-all duration-700 ease-in-out ${getPosition(
+                    className={`absolute w-[80%] md:w-[80%] h-[80vh] sm:h-[90vh] cursor-pointer rounded-3xl overflow-hidden shadow-2xl transition-all duration-700 ease-in-out ${getPosition(
                         index
                     )}`}
                 >

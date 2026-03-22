@@ -27,7 +27,7 @@ const Nav = () => {
         } to={`/myproperties/${user?.email}`}>My Properties</NavLink>
         </li>
         <li><NavLink className={({ isActive }) => isActive ? "text-primary border-b-2 bg-transparent rounded-none  border-b-primary" : "bg-transparent"
-        } to={'/properties/ratings'}>My Ratings</NavLink>
+        } to={'/properties/ratings'}>Ratings</NavLink>
         </li>
     </>
     return (
@@ -52,12 +52,13 @@ const Nav = () => {
                             user ?
                                 <div>
                                     <div className="dropdown dropdown-bottom dropdown-end">
-                                        <div tabIndex={0} role="button" className="avatar">
-                                            <div className="ring-primary ring-offset-base-100 w-12 md:w-14 rounded-full ring-1 ring-offset-1">
+                                        
+                                        <div tabIndex={0} role="button" className="avatar cursor-pointer">
+                                            <div className="ring-primary ring-offset-base-100 w-10 sm:w-14 rounded-full ring-1 ring-offset-1">
                                                 <img src={user.photoURL || 'https://img.daisyui.com/images/profile/demo/spiderperson@192.webp'} />
                                             </div>
                                         </div>
-                                        <div tabIndex="-1" className=" flex flex-col justify-center rounded-xl  dropdown-content menu bg-base-100 rounded-box z-10  shadow-sm">
+                                        <div tabIndex={0}className="dropdown-content flex flex-col justify-center rounded-xl  dropdown-content menu bg-base-100 rounded-box z-50 mt-3 shadow-sm">
                                             <img src={user.photoURL || 'https://img.daisyui.com/images/profile/demo/spiderperson@192.webp'} alt="" className="w-18  mx-auto bg-white outline-1 outline-primary rounded-full aspect-square" />
                                             <div className="space-y-4 text-center divide-y dark:divide-gray-300">
                                                 <div className="my-2 space-y-1">
@@ -96,18 +97,19 @@ const Nav = () => {
                         }
                     </div>
                 </div>
+
                 <div className="dropdown dropdown-bottom dropdown-end">
                     <div tabIndex={0} role="button" className="pl-2 md:pl-4 cursor-pointer m-1 lg:hidden"><IoMdMenu className='text-secondary' size={35}></IoMdMenu> </div>
-                    <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm space-y-2">
+                    <ul tabIndex={0} className="dropdown-content menu mt-3 bg-base-100 rounded-box z-50 w-52 p-2 shadow-sm space-y-2">
                         <li ><Link className={"text-blue-500  bg-transparent hover:bg-primary hover:text-white shadow-md "} to={'/'}>Home</Link>
                         </li>
-                        <li className=''><Link className={"text-blue-500  bg-transparent hover:bg-primary hover:text-white shadow-md "}>All Properties</Link>
+                        <li className=''><Link to={'/allproperties'}  className={"text-blue-500  bg-transparent hover:bg-primary hover:text-white shadow-md "}>All Properties</Link>
                         </li>
-                        <li><Link className={"text-blue-500  bg-transparent hover:bg-primary hover:text-white shadow-md "} to={'/addprperties'}>Add Properties</Link>
+                        <li><Link className={"text-blue-500  bg-transparent hover:bg-primary hover:text-white shadow-md "} to={'/addproperties'}>Add Properties</Link>
                         </li>
-                        <li><Link className={"text-blue-500  bg-transparent hover:bg-primary hover:text-white shadow-md "} to={'/myproperties'}>My Properties</Link>
+                        <li><Link className={"text-blue-500  bg-transparent hover:bg-primary hover:text-white shadow-md "} to={`/myproperties/${user?.email}`}>My Properties</Link>
                         </li>
-                        <li><Link className={"text-blue-500  bg-transparent hover:bg-primary hover:text-white shadow-md "} to={'/myratings'}>My Ratings</Link>
+                        <li><Link className={"text-blue-500  bg-transparent hover:bg-primary hover:text-white shadow-md "} to={'/properties/ratings'}>Ratings</Link>
                         </li>
                     </ul>
                 </div>

@@ -15,7 +15,7 @@ const Cards = ({ properties }) => {
                 <p className='text-secondary text-center text-md md:text-xl'>His needs result from something escape him indeed are consectetur will</p>
             </div>
 
-            <div className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid justify-center grid-cols-1 px-2 sm:px-4 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {
                     properties.slice(0, 6).map(property => <Card property={property}
                     key={property._id}></Card>)
