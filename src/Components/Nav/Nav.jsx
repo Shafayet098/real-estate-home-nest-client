@@ -49,32 +49,50 @@ const Nav = () => {
                 <div className="navbar-end flex items-center gap-4">
                     <div>
                         {
-                            user && 
-                            <div className="avatar">
-                                <div className="ring-primary ring-offset-base-100 w-10 md:w-12 rounded-full ring-1 ring-offset-1">
-                                    <img src={user.photoURL || 'https://img.daisyui.com/images/profile/demo/spiderperson@192.webp'} />
-                                </div>
-                            </div>
-                        }
-                    </div>
-                    <div>
-                        {
                             user ?
-                                <Link onClick={handleLogout} class="relative inline-flex items-center justify-center p-2 px-4 md:px-6 py-2 md:py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-primary rounded-full shadow-md group">
-                                    <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-primary group-hover:translate-x-0 ease">
-                                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                                    </span>
-                                    <span class="absolute flex items-center justify-center text-primary transition-all duration-300 transform group-hover:translate-x-full ease">Logout </span>
-                                    <span class="relative invisible">Logout</span>
-                                </Link>
+                                <div>
+                                    <div className="dropdown dropdown-bottom dropdown-end">
+                                        <div tabIndex={0} role="button" className="avatar">
+                                            <div className="ring-primary ring-offset-base-100 w-12 md:w-14 rounded-full ring-1 ring-offset-1">
+                                                <img src={user.photoURL || 'https://img.daisyui.com/images/profile/demo/spiderperson@192.webp'} />
+                                            </div>
+                                        </div>
+                                        <div tabIndex="-1" className=" flex flex-col justify-center rounded-xl  dropdown-content menu bg-base-100 rounded-box z-10  shadow-sm">
+                                            <img src={user.photoURL || 'https://img.daisyui.com/images/profile/demo/spiderperson@192.webp'} alt="" className="w-18  mx-auto bg-white outline-1 outline-primary rounded-full aspect-square" />
+                                            <div className="space-y-4 text-center divide-y dark:divide-gray-300">
+                                                <div className="my-2 space-y-1">
+                                                    <h2 className="text-xl font-semibold">{user?.displayName || "No Name"}</h2>
+                                                    <p className="px-5 text-xs sm:text-base dark:text-gray-600">{user?.email}</p>
+                                                </div>
+                                                <Link onClick={handleLogout} className="relative inline-flex items-center justify-center p-2 px-6 md:px-8 py-2 md:py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-primary rounded-full shadow-md group">
+                                                    <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-primary group-hover:translate-x-0 ease">
+                                                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                                    </span>
+                                                    <span className="absolute flex items-center justify-center text-primary transition-all duration-300 transform group-hover:translate-x-full ease">Logout </span>
+                                                    <span class="relative invisible">Logout</span>
+                                                </Link>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 :
-                                <Link to={'/login'} class="relative inline-flex items-center justify-center p-2 px-4 md:px-6 py-2 md:py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-primary rounded-full shadow-md group">
-                                    <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-primary group-hover:translate-x-0 ease">
-                                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                                    </span>
-                                    <span class="absolute flex items-center justify-center text-primary transition-all duration-300 transform group-hover:translate-x-full ease">Login </span>
-                                    <span class="relative invisible">Login</span>
-                                </Link>
+                                <div className='flex gap-2'>
+                                    <Link to={'/login'} className="relative inline-flex items-center justify-center p-2 px-4 md:px-6 py-2 md:py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-primary rounded-full shadow-md group">
+                                        <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-primary group-hover:translate-x-0 ease">
+                                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                        </span>
+                                        <span className="absolute flex items-center justify-center text-primary transition-all duration-300 transform group-hover:translate-x-full ease">Login </span>
+                                        <span className="relative invisible">Login</span>
+                                    </Link>
+                                    <Link to={'/register'} className="relative inline-flex items-center justify-center p-2 px-4 md:px-6 py-2 md:py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-primary rounded-full shadow-md group">
+                                        <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-primary group-hover:translate-x-0 ease">
+                                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                        </span>
+                                        <span className="absolute flex items-center justify-center text-primary transition-all duration-300 transform group-hover:translate-x-full ease">SignUp </span>
+                                        <span className="relative invisible">SignUp</span>
+                                    </Link>
+                                </div>
                         }
                     </div>
                 </div>

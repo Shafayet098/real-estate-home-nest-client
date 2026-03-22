@@ -5,13 +5,44 @@ import { LuSquareMenu } from 'react-icons/lu';
 import { RiHotelBedLine } from 'react-icons/ri';
 import { Link } from 'react-router';
 import defaultImage from './../../assets/image_default.jpg'
+import Swal from 'sweetalert2';
 
-const Card = ({ property }) => {
+const PropertyCard = ({ property, setProperties, properties }) => {
+    const handleDelete = () => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:3000/properties/${property._id}`, {
+                    method: 'DELETE'
+                }).then(res => res.json()).then(data => {
+                    if (data.deletedCount) {
+                        const remainingProperties = properties.filter(item => item._id !== property._id)
+                        setProperties(remainingProperties)
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your Card has been deleted.",
+                            icon: "success"
+                        });
+                    }
+                })
+            }
+        });
+
+
+    }
+    
     return (
         <div className='flex'>
-            <Link to={`/properties/${property._id}`} className="group  max-w-sm mx-auto transition border-2 p-2 hover:scale-105 border-opacity-30 border-primary hover:border-secondary">
+            <div className="group  max-w-sm mx-auto transition border-2 p-2 hover:scale-105 border-opacity-30 border-primary hover:border-secondary">
                 <div className="relative ">
-                    <div className='h-[40vh] object-cover overflow-hidden'> 
+                    <div className='h-[40vh] object-cover overflow-hidden'>
                         <img
                             src={property?.imageLink || defaultImage}
                             alt="Modern Chateau"
@@ -83,19 +114,27 @@ const Card = ({ property }) => {
                             {property?.location}
                         </p>
                     </div>
-                    <div className='mt-4'>
-                        <p className='text-secondary'>Posted By: <span className='font-semibold'>{property?.userName}</span></p>
-                    </div>
 
                     {/* Description */}
-                    <div className="mt-4 text-[14px] leading-8 text-secondary">
+                    <div className="mt-6 text-[14px] leading-8 text-secondary">
                         <span className="font-semibold text-secondary">Description:</span>{" "}
                         {property?.description}
                     </div>
                 </div>
-            </Link>
+                <div className='flex flex-col gap-2'>
+                    <Link className=' mx-auto w-full' to={`/properties/${property._id}`}>
+                        <button className='btn w-full bg-white hover:bg-primary text-primary hover:text-white border-2 border-primary'>View Details</button>
+                    </Link>
+                    <div className='gird grid-row-2 items-center   '>
+                        <Link to={`/properties/update/${property._id}`}>
+                            <button  className='btn w-[50%]  bg-white hover:bg-primary text-primary hover:text-white border-2 border-primary'>Edit</button>
+                        </Link>
+                        <button onClick={handleDelete} className='btn w-[50%] bg-white hover:bg-red-500 text-red-500 hover:text-white border-2 border-red-500'>Delete</button>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
 
-export default Card;
+export default PropertyCard;

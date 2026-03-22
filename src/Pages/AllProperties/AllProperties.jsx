@@ -1,10 +1,14 @@
 import React from 'react';
 import Card from '../../Components/Card/Card';
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useNavigation } from 'react-router';
 
 const AllProperties = () => {
     const properties = useLoaderData();
-    console.log(properties)
+    // console.log(properties)
+    const navigation = useNavigation();
+    if(navigation.state === 'loading'){
+        return <Loading></Loading>
+    }
     
     return (
         <div className='mt-22 container mx-auto'>

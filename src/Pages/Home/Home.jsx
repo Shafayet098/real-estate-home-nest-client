@@ -4,11 +4,15 @@ import ChooseUs from '../../Components/ChooseUs/ChooseUs';
 import Services from '../../Components/Services/Services';
 import Partners from '../../Components/Partners/Partners';
 import Cards from '../../Components/Cards/Cards';
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useNavigation } from 'react-router';
 
 const Home = () => {
     const properties = useLoaderData();
-    console.log(properties)
+    // console.log(properties)
+    const navigation = useNavigation();
+    if (navigation.state === 'loading') {
+        return <Loading></Loading>
+    }
     return (
         <div>
             <div className='mt-20'>

@@ -1,14 +1,13 @@
 import React, { use } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
+import { useLoaderData, useNavigate } from 'react-router';
 import { AuthContext } from '../../Components/Context/AuthContext';
-import { useNavigation } from 'react-router';
+import toast, { Toaster } from 'react-hot-toast';
 
-const AddProperties = () => {
+const Update = () => {
+    const property = useLoaderData();
+    // console.log(property)
+    const navigate = useNavigate();
     const { user } = use(AuthContext)
-    const navigation = useNavigation();
-    if (navigation.state === 'loading') {
-        return <Loading></Loading>
-    }
     // console.log(user)
     const handleFormSubmit = (e) => {
         e.preventDefault();
@@ -17,18 +16,18 @@ const AddProperties = () => {
         const realEstateData = Object.fromEntries(formData.entries());
         realEstateData.postedTime = new Date().toISOString();
         // console.log(realEstateData)
-        fetch('http://localhost:3000/addproperties', {
-            method: 'POST',
+
+        fetch(`http://localhost:3000/properties/${property._id}`, {
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(realEstateData)
-        })
-            .then(res => res.json())
+        }).then(res => res.json())
             .then(data => {
-                if (data.insertedId) {
-                    toast.success('Property is Successfully Added!')
-                    form.reset()
+                if (data.modifiedCount) {
+                   toast.success('Property is Successfully Updated!')
+                   navigate(`/properties/${property._id}`)
                 }
             })
 
@@ -36,10 +35,10 @@ const AddProperties = () => {
     return (
         <div className="card-body p-6 md:p-8 mt-16 container mx-auto">
             <h1 className="text-4xl font-bold text-center text-secondary">
-                Add Property
+                Update Property
             </h1>
             <p className="text-center text-secondary mt-2">
-                Fill in the details below to add a new property listing.
+                Edit the details below to Update an existing property.
             </p>
 
             <div className='p-8 sm:p-12  bg-slate-100 shadow-lg rounded-md'>
@@ -51,6 +50,7 @@ const AddProperties = () => {
                         <input
                             type="text"
                             name="propertyName"
+                            defaultValue={property?.propertyName}
                             placeholder="Enter property name"
                             className="input outline-primary border-0 w-full text-primary text-lg font-semibold"
                             required
@@ -64,6 +64,7 @@ const AddProperties = () => {
                         <textarea
                             name="description"
                             placeholder="Enter property description"
+                            defaultValue={property?.description}
                             className="textarea textarea-bordered w-full h-28 outline-primary border-0 text-primary text-lg font-semibold"
                             required
                         />
@@ -76,6 +77,7 @@ const AddProperties = () => {
                             </label>
                             <select
                                 name="category"
+                                defaultChecked={property?.category}
                                 className="select select-bordered w-full outline-primary border-0 text-primary text-lg font-semibold"                    >
                                 <option>Rent</option>
                                 <option>Sale</option>
@@ -93,6 +95,7 @@ const AddProperties = () => {
                             <input
                                 type="number"
                                 name="price"
+                                defaultValue={property?.price}
                                 placeholder="Enter price"
                                 className="input input-bordered w-full outline-primary border-0 text-primary text-lg font-semibold"
                                 required
@@ -105,6 +108,7 @@ const AddProperties = () => {
                             <input
                                 type="text"
                                 name="squareFeet"
+                                defaultValue={property?.squareFeet}
                                 placeholder="Enter Square Feet"
                                 className="input input-bordered w-full outline-primary border-0 text-primary text-lg font-semibold"
                                 required
@@ -117,6 +121,7 @@ const AddProperties = () => {
                             <input
                                 type="number"
                                 name="beds"
+                                defaultValue={property?.beds}
                                 placeholder="Enter Beds Number"
                                 className="input input-bordered w-full outline-primary border-0 text-primary text-lg font-semibold"
                                 required
@@ -131,6 +136,7 @@ const AddProperties = () => {
                             type="text"
                             name="location"
                             placeholder="Enter city, area, or address"
+                            defaultValue={property?.location}
                             className="input outline-primary border-0 w-full text-primary text-lg font-semibold"
                             required
                         />
@@ -143,6 +149,7 @@ const AddProperties = () => {
                         <input
                             type="url"
                             name="imageLink"
+                            defaultValue={property?.imageLink}
                             placeholder="Enter image URL"
                             className="input w-full outline-primary border-0 text-primary text-lg font-semibold"
                             required
@@ -180,16 +187,15 @@ const AddProperties = () => {
                     </div>
 
                     <div className="pt-3">
-                        <button type="submit" className="btn border-2 border-primary  w-full text-xl  rounded-lg py-4  text-primary font-semibold hover:bg-primary hover:text-white">
-                            Add Property
+                        <button type="submit" className=" btn border-2 border-primary  w-full text-xl  rounded-lg py-4  text-primary font-semibold hover:bg-primary hover:text-white">
+                            Update Property
                         </button>
                     </div>
                 </form>
             </div>
             <Toaster />
         </div>
-
     );
 };
 
-export default AddProperties;
+export default Update;

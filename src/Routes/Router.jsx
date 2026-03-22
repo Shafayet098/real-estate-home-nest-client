@@ -9,6 +9,8 @@ import PrivateRoute from "../Components/PrivateRoute/PrivateRoute";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import Property from "../Pages/Property/Property";
+import Error from "./Error";
+import Update from "../Pages/Update/Update";
 
 export const router = createBrowserRouter([
   {
@@ -34,15 +36,14 @@ export const router = createBrowserRouter([
       },
       {
         path: 'properties/:id',
-        loader:({params})=>fetch(`http://localhost:3000/properties/${params.id}`),
-        element: 
+        loader: ({ params }) => fetch(`http://localhost:3000/properties/${params.id}`),
+        element:
           <PrivateRoute>
             <Property></Property>
           </PrivateRoute>
       },
       {
         path: 'myproperties/:email',
-        loader: ({ params }) => fetch(`http://localhost:3000/properties/${params.email}`),
         element:
           <PrivateRoute>
             <MyProperties></MyProperties>
@@ -50,9 +51,18 @@ export const router = createBrowserRouter([
       },
       {
         path: 'properties/ratings',
+        loader:()=>fetch(`http://localhost:3000/reviews`),
         element:
           <PrivateRoute>
             <Retings></Retings>
+          </PrivateRoute>
+      },
+      {
+        path: 'properties/update/:id',
+        loader:({params})=>fetch(`http://localhost:3000/properties/${params.id}`),
+        element:
+          <PrivateRoute>
+            <Update></Update>
           </PrivateRoute>
       },
       {
@@ -65,4 +75,8 @@ export const router = createBrowserRouter([
       }
     ]
   },
+  {
+    path: '/*',
+    Component: Error
+  }
 ]);

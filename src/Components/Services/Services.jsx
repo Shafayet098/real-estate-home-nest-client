@@ -21,47 +21,47 @@ const Services = () => {
                     onMouseLeave={() => setActive(!active)} class={`${active ? 'border-l-primary border-l-4 bg-gray-100 rounded-xl p-6  md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 transition  scale-105 border-opacity-30 border-primary group duration-1000 shadow-lg' : 'bg-gray-100 rounded-2xl p-6  md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-lg'}`}>
                     <div class="flex-1">
                         <div class="flex items-start gap-4">
-                            <div class={`${active ? 'p-4 rounded-xl bg-primary text-white hidden sm:flex' : 'bg-green-100 p-4 rounded-xl text-primary hidden sm:flex'}`}>
+                            <div className={`${active ? 'p-4 rounded-xl bg-primary text-white hidden sm:flex' : 'bg-green-100 p-4 rounded-xl text-primary hidden sm:flex'}`}>
                                 <IoSearch size={40}></IoSearch>
                             </div>
 
                             <div>
-                                <h2 class="text-xl md:text-2xl font-semibold text-secondary">
+                                <h2 className="text-xl md:text-2xl font-semibold text-secondary">
                                     Property Search
                                 </h2>
-                                <p class="mt-2 text-secondary max-w-md">
+                                <p className="mt-2 text-secondary max-w-md">
                                     Except they are blinded by desire, they do not prosper, they are at fault who abandon their duties, they soften the soul, that is, they are burdened by labor.
                                 </p>
                                 <div>
-                                    <ul class="mt-5 space-y-3 text-secondary">
+                                    <ul className="mt-5 space-y-3 text-secondary">
                                         <li class="flex items-center gap-2">
-                                            <span class="text-primary">
+                                            <span className="text-primary">
                                                 <HiArrowCircleRight size={25}></HiArrowCircleRight> </span> Comprehensive Listings
                                         </li>
 
-                                        <li class="flex items-center gap-2">
-                                            <span class="text-primary">
+                                        <li className="flex items-center gap-2">
+                                            <span className="text-primary">
                                                 <HiArrowCircleRight size={25}></HiArrowCircleRight></span> Advanced Filtering
                                         </li>
-                                        <li class="flex items-center gap-2">
-                                            <span class="text-primary">
+                                        <li className="flex items-center gap-2">
+                                            <span className="text-primary">
                                                 <HiArrowCircleRight size={25}></HiArrowCircleRight></span> Virtual Tours
                                         </li>
                                     </ul>
 
                                 </div>
                                 <div>
-                                    <a href="#" class="inline-flex items-center gap-2 mt-6 text-primary font-semibold hover:border-b-2 border-b-primary ">
+                                    <a href="#" className="inline-flex items-center gap-2 mt-6 text-primary font-semibold hover:border-b-2 border-b-primary ">
                                         Explore Now
                                         <span><RiArrowRightUpLongFill></RiArrowRightUpLongFill> </span>
                                     </a>
                                 </div>
                             </div>
-                            <div class="w-full md:w-[180px] h-[140px] rounded-xl overflow-hidden">
+                            <div className="w-full md:w-[180px] h-[140px] rounded-xl overflow-hidden">
                                 <img
                                     src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=400&q=80"
                                     alt="Property"
-                                    class="w-full h-full object-cover"
+                                    className="w-full h-full object-cover"
                                 />
                             </div>
 
@@ -72,50 +72,50 @@ const Services = () => {
                 </div>
                 <div onMouseEnter={() => setActive2(!active2)}
                     onMouseLeave={() => setActive2(!active2)} class={`${active2 ? 'border-l-primary border-l-4 bg-gray-100 rounded-xl p-6  md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 transition  scale-105 border-opacity-30 border-primary group duration-1000 shadow-lg' : 'bg-gray-100 rounded-2xl p-6  md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-lg'}`}>
-                    <div class="flex-1">
-                        <div class="flex items-start gap-4">
-                            <div class={`${active2 ? 'p-4 rounded-xl bg-primary text-white hidden sm:flex' : 'bg-green-100 p-4 rounded-xl text-primary hidden sm:flex'}`}>
+                    <div className="flex-1">
+                        <div className="flex items-start gap-4">
+                            <div className={`${active2 ? 'p-4 rounded-xl bg-primary text-white hidden sm:flex' : 'bg-green-100 p-4 rounded-xl text-primary hidden sm:flex'}`}>
                                 <BsFillCalculatorFill size={40}></BsFillCalculatorFill>
                             </div>
 
                             <div>
-                                <h2 class="text-xl md:text-2xl font-semibold text-accent">
+                                <h2 className="text-xl md:text-2xl font-semibold text-accent">
                                     Property Valuation
                                 </h2>
-                                <p class="mt-2 text-secondary max-w-md">
+                                <p className="mt-2 text-secondary max-w-md">
                                     But so that you may see where all this error comes from, I will explain
                                     the whole matter, accusing pleasure and praising pain.
                                 </p>
                                 <div>
-                                    <ul class="mt-5 space-y-3 text-secondary">
-                                        <li class="flex items-center gap-2">
-                                            <span class="text-primary">
+                                    <ul className="mt-5 space-y-3 text-secondary">
+                                        <li className="flex items-center gap-2">
+                                            <span className="text-primary">
                                                 <HiArrowCircleRight size={25}></HiArrowCircleRight> </span> Market Analysis
                                         </li>
 
-                                        <li class="flex items-center gap-2">
+                                        <li className="flex items-center gap-2">
                                             <span class="text-primary">
                                                 <HiArrowCircleRight size={25}></HiArrowCircleRight></span> Comparative Reports
                                         </li>
-                                        <li class="flex items-center gap-2">
-                                            <span class="text-primary">
+                                        <li className="flex items-center gap-2">
+                                            <span className="text-primary">
                                                 <HiArrowCircleRight size={25}></HiArrowCircleRight></span> Investment Insights
                                         </li>
                                     </ul>
 
                                 </div>
                                 <div>
-                                    <a href="#" class="inline-flex items-center gap-2 mt-6 text-primary font-semibold hover:border-b-2 border-b-primary ">
+                                    <a href="#" className="inline-flex items-center gap-2 mt-6 text-primary font-semibold hover:border-b-2 border-b-primary ">
                                         Get Valuation
                                         <span><RiArrowRightUpLongFill></RiArrowRightUpLongFill> </span>
                                     </a>
                                 </div>
                             </div>
-                            <div class="w-full md:w-[180px] h-[140px] rounded-xl overflow-hidden">
+                            <div className="w-full md:w-[180px] h-[140px] rounded-xl overflow-hidden">
                                 <img
                                     src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                                     alt="Property"
-                                    class="w-full h-full object-cover"
+                                    className="w-full h-full object-cover"
                                 />
                             </div>
 

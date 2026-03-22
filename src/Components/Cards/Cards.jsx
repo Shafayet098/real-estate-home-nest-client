@@ -6,12 +6,7 @@ import { Link } from 'react-router';
 import Card from '../Card/Card';
 
 const Cards = ({ properties }) => {
-    // useEffect(() => {
-    //     fetch('http://localhost:3000/properties')
-    //         .then(res => res.json())
-    //         .then(data => setCards(data))
-    // }, [])
-    console.log(properties)
+    // console.log(properties)
     return (
         <section className=" text-gray-100">
             <div className='flex flex-col items-center mb-16'>
@@ -22,7 +17,8 @@ const Cards = ({ properties }) => {
 
             <div className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {
-                    properties.slice(0, 6).map(property => <Card property={property}></Card>)
+                    properties.slice(0, 6).map(property => <Card property={property}
+                    key={property._id}></Card>)
                 }
             </div>
 
